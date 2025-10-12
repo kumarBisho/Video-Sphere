@@ -4,6 +4,9 @@ A full-stack Flask web application to manage your personal YouTube video library
 Users can **add, update, view, and delete videos** with details like title, duration, and URL.  
 VidVault provides a clean interface and RESTful backend — perfect for organizing your YouTube watchlist.
 
+# Project Link
+https://video-sphere.onrender.com/
+
 ---
 
 ## 🚀 Features
@@ -72,7 +75,7 @@ Minimum prerequisites
 1) Clone the repository
 
 ```powershell
-git clone https://github.com/<your-username>/Video-Sphere.git
+git clone https://github.com/kumarBisho/Video-Sphere.git
 cd "C:\Users\BK Yadav\OneDrive\Desktop\All_software_activity\YouTube_Manager"
 ```
 
