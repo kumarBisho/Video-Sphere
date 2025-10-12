@@ -76,7 +76,7 @@ Minimum prerequisites
 
 ```powershell
 git clone https://github.com/kumarBisho/Video-Sphere.git
-cd "C:\Users\BK Yadav\OneDrive\Desktop\All_software_activity\YouTube_Manager"
+cd "YouTube_Manager"
 ```
 
 2) Create & activate a virtual environment (PowerShell)
@@ -164,6 +164,16 @@ If you want I can also:
 - Add an example `.env.example` file with common environment variables
 - Add a Makefile or PowerShell script to automate setup
 - Update the GitHub Actions workflow to publish to Docker Hub instead of GHCR
+
+## 🧠 Future Enhancements
+
+🔐 Add user authentication
+
+🎞️ Integrate YouTube API for auto metadata
+
+📊 Dashboard for video stats
+
+🌍 Multi-user playlists
 
 ### Author
 
