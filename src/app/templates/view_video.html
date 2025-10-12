@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ video.title }}{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h3>{{ video.title }}</h3>
+    <p><strong>Description:</strong> {{ video.description }}</p>
+    <p><strong>Duration:</strong> {{ video.duration }}</p>
+    <a href="{{ video.url }}" target="_blank" class="btn btn-primary">Watch on YouTube</a>
+    <a href="{{ url_for('main.edit_video', id=video.id) }}" class="btn btn-secondary">Edit</a>
+    <a href="{{ url_for('main.index') }}" class="btn btn-outline-dark">Back</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<table class="table table-striped align-middle">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Duration</th>
+      <th>URL</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for video in videos %}
+      <tr>
+        <td>{{ video.id }}</td>
+        <td><a href="{{ url_for('main.view_video', id=video.id) }}">{{ video.title }}</a></td>
+        <td>{{ video.duration }}</td>
+        <td><a href="{{ video.url }}" target="_blank">Watch</a></td>
+        <td>
+          <a href="{{ url_for('main.edit_video', id=video.id) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+          <form action="{{ url_for('main.delete_video', id=video.id) }}" method="POST" style="display:inline;">
+            <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this video?')">Delete</button>
+          </form>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="5" class="text-center text-muted">No videos found.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
