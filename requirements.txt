@@ -10,4 +10,4 @@ flask-login
 flask-bcrypt
 flask-WTF
 email-validator
-urlib
+urllib3
