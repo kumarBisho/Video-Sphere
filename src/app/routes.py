@@ -1,4 +1,25 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
+import re
+def get_youtube_embed_url(url):
+    """
+    Extracts the YouTube video ID from a URL and returns the embed URL.
+    Supports both youtube.com/watch?v=... and youtu.be/... formats.
+    """
+    if not url:
+        return None
+    
+    embed_match = re.search(r'(embed)', url)
+    
+    if embed_match:
+        return url
+    
+    # Match youtube.com/watch?v=VIDEO_ID
+    match = re.search(r'(?:v=|youtu\.be/)([\w-]+)', url)
+    if match:
+        video_id = match.group(1)
+        return f'https://www.youtube.com/embed/{video_id}'
+    return None
+from flask_login import login_required, current_user
 from .models import Video
 from .extensions import db
 from .forms import VideoForm
@@ -16,9 +37,13 @@ def index():
 @main_bp.route('/video/<int:id>')
 def view_video(id):
     video = Video.query.get_or_404(id)
+    # embed_url = get_youtube_embed_url(video.url)
+    # video.embed_url = embed_url
+    # return render_template('view_video.html', video=video, embed_url=embed_url)
     return render_template('view_video.html', video=video)
 
 @main_bp.route('/videos/add', methods=['GET', 'POST'])
+@login_required
 def add_video():
     form = VideoForm()
     if form.validate_on_submit():
@@ -26,7 +51,8 @@ def add_video():
             title=form.title.data,
             description=form.description.data,
             url=form.url.data, 
-            duration=form.duration.data
+            duration=form.duration.data,
+            user_id=current_user.id
         )
         db.session.add(new_video)
         db.session.commit()

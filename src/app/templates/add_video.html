@@ -1,27 +1,33 @@
 {% extends 'base.html' %}
-{% block title %}Add Video{% endblock %}
-{% block content %}
-<h3 class="mb-3">Add New Video</h3>
+{% block title %}Add New Video{% endblock %}
 
-<form method="POST">
-  {{ form.hidden_tag() }}
-  <div class="mb-3">
-    {{ form.title.label(class="form-label") }}
-    {{ form.title(class="form-control") }}
-  </div>
-  <div class="mb-3">
-    {{ form.description.label(class="form-label") }}
-    {{ form.description(class="form-control") }}
-  </div>
-  <div class="mb-3">
-    {{ form.url.label(class="form-label") }}
-    {{ form.url(class="form-control") }}
-  </div>
-  <div class="mb-3">
-    {{ form.duration.label(class="form-label") }}
-    {{ form.duration(class="form-control") }}
-  </div>
-  <button type="submit" class="btn btn-primary">Add Video</button>
-  <a href="{{ url_for('main.index') }}" class="btn btn-secondary">Cancel</a>
-</form>
+{% block content %}
+<div class="container mt-4">
+  <h3>Add New Video</h3>
+  {% if current_user.is_authenticated %}
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control") }}
+      </div>
+      <div class="mb-3">
+        {{ form.url.label(class="form-label") }}
+        {{ form.url(class="form-control") }}
+      </div>
+      <div class="mb-3">
+        {{ form.duration.label(class="form-label") }}
+        {{ form.duration(class="form-control") }}
+      </div>
+      <div class="mb-3">
+        {{ form.description.label(class="form-label") }}
+        {{ form.description(class="form-control") }}
+      </div>
+      <button type="submit" class="btn btn-success">Add Video</button>
+      <a href="{{ url_for('main.index') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+  {% else %}
+  <p>You must <a href="{{ url_for('auth.login') }}">login</a> to add a video.</p>
+  {% endif %}
+</div>
 {% endblock %}
