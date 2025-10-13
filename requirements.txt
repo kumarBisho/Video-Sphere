@@ -7,7 +7,7 @@ gunicorn>=20.0
 psycopg2-binary>=2.9
 psycopg2-binary
 flask-login
-flask-bycrypt
+flask-bcrypt
 flask-WTF
 email-validator
 urlib
