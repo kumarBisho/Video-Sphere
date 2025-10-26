@@ -167,13 +167,9 @@ If you want I can also:
 
 ## 🧠 Future Enhancements
 
-🔐 Add user authentication
+Integrate YouTube API for auto metadata
+Add private or public section for uploading video
 
-🎞️ Integrate YouTube API for auto metadata
-
-📊 Dashboard for video stats
-
-🌍 Multi-user playlists
 
 ### Author
 
